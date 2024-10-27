@@ -26,7 +26,7 @@ jobs:
           PAT: ${{ secrets.PAT }}
         run: node fetch_all_states_issues_labels.js
 
-      - name: Sleep for 30 seconds
+      - name: Sleep for 180 seconds
         run: sleep 30
 
       - name: Run Fetch open issue Labels Script
@@ -34,7 +34,7 @@ jobs:
           PAT: ${{ secrets.PAT }}
         run: node fetch_open_issues_labels.js
 
-      - name: Sleep for 30 seconds
+      - name: Sleep for 180 seconds
         run: sleep 30
 
       - name: Run Fetch closed issue Labels Script
