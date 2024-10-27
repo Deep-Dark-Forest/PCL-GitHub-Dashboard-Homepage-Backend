@@ -23,12 +23,12 @@ jobs:
 
       - name: Run Fetch Labels Script
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          PAT: ${{ secrets.PAT }}
         run: node fetch_labels.js
 
       - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          PAT: ${{ secrets.PAT }}
         run: |
           git config --local user.name "HelloWFB"
           git config --local user.email "167983016+HelloWFB@users.noreply.github.com"
