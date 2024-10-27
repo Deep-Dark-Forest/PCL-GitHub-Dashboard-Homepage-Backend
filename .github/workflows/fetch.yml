@@ -27,7 +27,7 @@ jobs:
         run: node fetch_all_states_issues_labels.js
 
       - name: Sleep for 180 seconds
-        run: sleep 30
+        run: sleep 180
 
       - name: Run Fetch open issue Labels Script
         env:
@@ -35,7 +35,7 @@ jobs:
         run: node fetch_open_issues_labels.js
 
       - name: Sleep for 180 seconds
-        run: sleep 30
+        run: sleep 180
 
       - name: Run Fetch closed issue Labels Script
         env:
