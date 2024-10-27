@@ -10,13 +10,13 @@ const excludePatterns = /➦ (删除|解锁|锁定)/;
     const { data: labels } = await axios.get(url, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
-        Authorization: `Bearer ${process.env.SHEEP}`,
+        Authorization: `Bearer ${process.env.PAT}`,
       },
     });
 
     for (const label of labels) {
       if (excludePatterns.test(label.name)) continue;
-      const sanitizedLabel = label.name.replace(/[🟩🟪🟥🟨🚫<>"\\/:|?* ]/g, '_');
+      const sanitizedLabel = label.name.replace(/[🟩🟪🟨🟥🚫<>"\\/:|?* ]/g, '_');
       const fileName = `${sanitizedLabel}.md`;
       const issuesUrl = `https://api.github.com/search/issues?q=repo:${repo}+is:issue+label:"${encodeURIComponent(
         label.name
@@ -24,13 +24,13 @@ const excludePatterns = /➦ (删除|解锁|锁定)/;
       const { data: issues } = await axios.get(issuesUrl, {
         headers: {
           Accept: 'application/vnd.github.v3+json',
-          Authorization: `Bearer ${process.env.SHEEP}`,
+          Authorization: `Bearer ${process.env.PAT}`,
         },
       });
       fs.writeFileSync(path + fileName, `${issues.total_count}`);
     }
   } catch (error) {
-    console.error(`Error fetching labels or writing files: ${error.message}`);
+    console.error(`Error fetching labels or writing files: ${error.response ? error.response.data : error.message}`);
     process.exit(1);
   }
 })();
