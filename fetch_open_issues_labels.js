@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = './';
 const repo = 'Hex-Dragon/PCL2';
 const url = `https://api.github.com/repos/${repo}/labels`;
-const excludePatterns = /➦ (删除|解锁|锁定)/;
+const excludePatterns = /➦ (删除|解锁|锁定)|完成|重复|忽略|拒绝 / 放弃/;
 
 (async function () {
   try {
