@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Fetch Labels Script
         env:
-          SHEEP: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: node fetch_labels.js
 
       - name: Commit and Push Changes
