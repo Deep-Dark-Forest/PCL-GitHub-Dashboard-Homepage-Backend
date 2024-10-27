@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = './';
 const repo = 'Hex-Dragon/PCL2';
 const url = `https://api.github.com/repos/${repo}/labels`;
-const excludePatterns = /➦ (删除|解锁|锁定)|投票中|新提交|社区处理中|等待提交者|等待确认|受阻碍|可合并|处理中|🚫 阻碍者|/;
+const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|投票中|新提交|社区处理中|等待提交者|等待确认|受阻碍|可合并|处理中|🚫 阻碍者|/;
 (async function () {
   try {
     const { data: labels } = await axios.get(url, {
