@@ -21,10 +21,20 @@ jobs:
       - name: Install Axios
         run: npm install axios
 
-      - name: Run Fetch Labels Script
+      - name: Run Fetch all states issue Labels Script
         env:
           PAT: ${{ secrets.PAT }}
-        run: node fetch_labels.js
+        run: node fetch_all_states_issues_labels.js
+
+      - name: Run Fetch open issue Labels Script
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: node fetch_open_issues_labels.js
+      
+      - name: Run Fetch closed issue Labels Script
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: node fetch_closed_issues_labels.js
 
       - name: Commit and Push Changes
         env:
