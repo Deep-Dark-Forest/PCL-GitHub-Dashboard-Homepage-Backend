@@ -26,16 +26,16 @@ jobs:
           PAT: ${{ secrets.PAT }}
         run: node fetch_all_states_issues_labels.js
 
-      - name: Sleep for 80 seconds
-        run: sleep 80
+      - name: Sleep for 70 seconds
+        run: sleep 70
 
       - name: Run Fetch open issue Labels Script
         env:
           PAT: ${{ secrets.PAT }}
         run: node fetch_open_issues_labels.js
 
-      - name: Sleep for 80 seconds
-        run: sleep 80
+      - name: Sleep for 70 seconds
+        run: sleep 70
 
       - name: Run Fetch closed issue Labels Script
         env:
