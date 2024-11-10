@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const path = './';
+const path = './data/';
 const repo = 'Hex-Dragon/PCL2';
 const url = `https://api.github.com/repos/${repo}/labels`;
 const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|投票中|新提交|社区处理中|等待提交者|等待确认|受阻碍|可合并|处理中|🚫 阻碍者|完成|重复|忽略|拒绝 \/ 放弃/;
@@ -13,6 +13,10 @@ const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|投票中|新提交|�
         Authorization: `Bearer ${process.env.PAT}`,
       },
     });
+
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path);
+    }
 
     for (const label of labels) {
       if (excludePatterns.test(label.name)) continue;
