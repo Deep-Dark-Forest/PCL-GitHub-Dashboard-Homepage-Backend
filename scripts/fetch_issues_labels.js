@@ -22,6 +22,8 @@ const states = [
   }
 ];
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 (async function () {
   try {
     const { data: labels } = await axios.get(labelsUrl, {
@@ -44,18 +46,36 @@ const states = [
         const queryPart = state.query.replace(/ /g, '+');
         const issuesUrl = `https://api.github.com/search/issues?q=repo:${repo}+${queryPart}+label:"${encodeURIComponent(label.name)}"`;
 
-        const { data: issues } = await axios.get(issuesUrl, {
-          headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${process.env.PAT}`,
-          },
-        });
-
-        fs.writeFileSync(`${path}${fileName}`, `${issues.total_count}`);
+        try {
+          await delay(1000);
+          const { data: issues } = await axios.get(issuesUrl, {
+            headers: {
+              Accept: 'application/vnd.github.v3+json',
+              Authorization: `Bearer ${process.env.PAT}`,
+            },
+          });
+          fs.writeFileSync(`${path}${fileName}`, `${issues.total_count}`);
+        } catch (error) {
+          console.error(`Error processing label "${label.name}":`);
+          console.error(`URL: ${issuesUrl}`);
+          if (error.response) {
+            console.error(`Status: ${error.response.status}`);
+            console.error(`Headers: ${JSON.stringify(error.response.headers)}`);
+            console.error(`Data: ${JSON.stringify(error.response.data)}`);
+          } else {
+            console.error(error.message);
+          }
+        }
       }
     }
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`Main process failed:`);
+    if (error.response) {
+      console.error(`Status: ${error.response.status}`);
+      console.error(`Error: ${JSON.stringify(error.response.data)}`);
+    } else {
+      console.error(error.message);
+    }
     process.exit(1);
   }
 })();
