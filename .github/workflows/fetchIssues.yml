@@ -2,7 +2,7 @@ name: Fetch Issue Counts by Label
 
 on:
   schedule:
-    - cron: "*/11 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
