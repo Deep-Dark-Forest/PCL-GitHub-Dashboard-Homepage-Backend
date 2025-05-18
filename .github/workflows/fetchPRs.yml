@@ -1,0 +1,35 @@
+name: Fetch PRs Counts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+  
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '14'
+  
+        - name: Install Axios
+          run: npm install axios
+
+        - name: Run Fetch closed PRs Script 
+          env:
+            PAT: ${{ secrets.PAT }}
+          run: node ./scripts/fetch_closed_prs.js
+
+        - name: Commit and Push Changes
+          env:
+            PAT: ${{ secrets.PAT }}
+          run: |
+            git config --local user.name "PCL-Community-Bot"
+            git config --local user.email "167983016+PCL-Community-Bot@users.noreply.github.com"
+            git add .
+            git commit -m "Update issue counts for labels" || echo "No changes to commit"
+            git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
