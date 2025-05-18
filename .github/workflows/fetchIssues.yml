@@ -1,4 +1,4 @@
- name: Fetch Issue Counts by Label
+ name: Fetch Issue Counts
 
  on:
   schedule:
