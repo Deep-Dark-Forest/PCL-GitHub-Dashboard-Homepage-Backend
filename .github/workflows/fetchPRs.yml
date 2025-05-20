@@ -33,3 +33,13 @@ jobs:
             git add .
             git commit -m "Update PRs counts" || echo "No changes to commit"
             git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
+        - name: Trigger auto-update.yml
+          if: success()
+          env:
+            GITHUB_TOKEN: ${{ secrets.PAT }}
+          run: |
+           curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/Deep-Dark-Forest/PCL2-GitHub-Dashboard-Homepage/blob/main/.github/workflows/auto-update.yml/dispatches \
+            -d '{"ref": "main"}'   
