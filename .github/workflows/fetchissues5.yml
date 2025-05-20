@@ -1,11 +1,11 @@
 name: Fetch Issue Counts 5
 
- on:
+on:
   schedule:
     - cron: "12,27,42,57 * * * *"
   workflow_dispatch:
 
- jobs:
+jobs:
   fetch-labels:
     runs-on: ubuntu-latest
 
