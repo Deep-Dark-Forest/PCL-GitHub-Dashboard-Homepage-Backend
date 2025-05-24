@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const path = './data/PR';
+const path = './data/PR/';
 const repo = 'Hex-Dragon/PCL2';
 const labelsUrl = `https://api.github.com/repos/${repo}/labels`;
 

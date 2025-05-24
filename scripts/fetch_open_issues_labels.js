@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const path = './data/issue';
+const path = './data/issue/';
 const repo = 'Hex-Dragon/PCL2';
 const url = `https://api.github.com/repos/${repo}/labels`;
 const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|投票中|新提交|社区处理中|等待确认|受阻碍|可合并|处理中|🚫 阻碍者|完成|重复|忽略|✨ 尝鲜特性|拒绝 \/ 放弃/;
