@@ -24,6 +24,22 @@ jobs:
             PAT: ${{ secrets.PAT }}
           run: node ./scripts/fetch_closed_prs.js
 
+        - name: Run Fetch closed PRs labels Script 
+          env:
+            PAT: ${{ secrets.PAT1 }}
+          run: node ./scripts/fetch_closed_PRs_labels.js
+        
+        - name: Run Fetch open PRs Script 
+          env:
+            PAT: ${{ secrets.PAT2 }}
+          run: node ./scripts/fetch_open_PRs_labels.js
+
+        - name: Run Fetch all states PRs Script 
+          env:
+            PAT: ${{ secrets.PAT }}
+          run: node ./scripts/fetch_all_states_PRs_labels.js 
+        
+
         - name: Commit and Push Changes
           env:
             PAT: ${{ secrets.PAT }}
