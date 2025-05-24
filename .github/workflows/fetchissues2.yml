@@ -2,7 +2,7 @@ name: Fetch Issue Counts 2
 
 on:
   schedule:
-    - cron: "3,18,33,48 * * * *"
+    - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
 
 jobs:
