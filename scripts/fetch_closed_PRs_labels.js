@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const path = './data/';
+const path = './data/PR';
 const repo = 'Hex-Dragon/PCL2';
 const url = `https://api.github.com/repos/${repo}/labels`;
 const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|✨ 尝鲜特性|受阻碍|可合并|处理中|完成|忽略|拒绝 \/ 放弃|投票中|新提交|社区处理中|等待提交者|等待确认|重复|需要社区复现|需要社区帮助|🟥 高|🟨 中|🟩 低|🟪 极高/;
@@ -20,7 +20,7 @@ const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|✨ 尝鲜特性|受�
     for (const label of labels) {
       if (excludePatterns.test(label.name)) continue;
       const sanitizedLabel = label.name.replace(/[🟩·🟪✨🟥🟨🚫<>"\\/:|?* ]/g, '_');
-      const fileName = `${sanitizedLabel}closed.md`;
+      const fileName = `${sanitizedLabel}PR-closed.md`;
       const issuesUrl = `https://api.github.com/search/issues?q=repo:${repo}+is:pr+is:closed+label:"${encodeURIComponent(
         label.name
       )}"`;
