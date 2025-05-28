@@ -46,8 +46,8 @@
           git commit -m "Update issue counts for labels" || echo "No changes to commit"
           git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
         
-      - name: sleep 50 sec
-        run: sleep 50
+      - name: sleep 20 sec
+        run: sleep 20
       
       - name: Trigger fetchPRs.yml
         if: success()
