@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = './data/PR/';
-const repo = 'Hex-Dragon/PCL2';
+const repo = 'Meloong-Git/PCL';
 const url = `https://api.github.com/repos/${repo}/labels`;
 const excludePatterns = /➦ 删除|➦ 解锁|➦ 锁定|✨ 尝鲜特性|受阻碍|可合并|处理中|完成|忽略|拒绝 \/ 放弃|投票中|新提交|社区处理中|等待确认|重复|需要社区复现|需要社区帮助|🟥 高|🟨 中|🟩 低|🟪 极高/;
 (async function () {

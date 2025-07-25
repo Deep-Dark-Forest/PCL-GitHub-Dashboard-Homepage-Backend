@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = './data/PR/';
-const repo = 'Hex-Dragon/PCL2';
+const repo = 'Meloong-Git/PCL';
 const labelsUrl = `https://api.github.com/repos/${repo}/labels`;
 
 (async function () {
