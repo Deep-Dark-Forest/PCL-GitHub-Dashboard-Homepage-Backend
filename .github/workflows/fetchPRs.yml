@@ -58,5 +58,5 @@ jobs:
            curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/Deep-Dark-Forest/PCL2-GitHub-Dashboard-Homepage/actions/workflows/auto-update.yml/dispatches \
+            https://api.github.com/repos/Deep-Dark-Forest/PCL-GitHub-Dashboard-Homepage/actions/workflows/auto-update.yml/dispatches \
             -d '{"ref": "main"}'   
