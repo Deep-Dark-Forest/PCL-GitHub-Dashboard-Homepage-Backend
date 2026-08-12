@@ -53,7 +53,7 @@ jobs:
         - name: Trigger auto-update.yml
           if: success()
           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PAT }}
           run: |
            curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
