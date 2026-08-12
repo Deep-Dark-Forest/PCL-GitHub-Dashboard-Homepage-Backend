@@ -44,8 +44,8 @@ jobs:
           env:
             PAT: ${{ secrets.GITHUB_TOKEN }}
           run: |
-            git config --local user.name "github-actions[bot]"
-            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "actions-user"
+            git config --global user.email "65916846+actions-user@users.noreply.github.com"
             git add .
             git commit -m "Update PRs counts" || echo "No changes to commit"
             git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
